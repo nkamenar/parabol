@@ -22,7 +22,7 @@ jobs:
       - name: Determine Node version
         id: nodever
         run: |
-          NODE_VERSION=$(jq -r '.engines.node' package.json)
+          NODE_VERSION=$(jq -r '.engines.node | ltrimstr("^") | ltrimstr("~")' package.json)
           echo "NODE_VERSION=$NODE_VERSION" >> $GITHUB_ENV
 
       # 4) Set up multi‑arch Docker builder (you can remove platforms if you only care about linux/amd64)
