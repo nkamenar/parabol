@@ -1,9 +1,7 @@
 name: Mirror Parabol to Docker Hub
 
-# fire whenever Parabol publishes a GitHub release
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
 
 jobs:
   mirror:
