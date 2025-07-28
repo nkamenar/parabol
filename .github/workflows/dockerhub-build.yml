@@ -2,7 +2,11 @@ name: Mirror Parabol to Docker Hub
 
 on:
   workflow_dispatch:
-
+    inputs:
+      tag:
+        description: 'Docker image tag (e.g. v10.14.0)'
+        required: true
+        
 jobs:
   mirror:
     runs-on: ubuntu-latest
@@ -43,5 +47,5 @@ jobs:
             _NODE_VERSION=${{ env.NODE_VERSION }}
           push: true
           tags: |
-            lucrin/parabol:${{ github.event.release.tag_name }}
+            lucrin/parabol:${{ github.event.inputs.tag }}
             lucrin/parabol:latest
